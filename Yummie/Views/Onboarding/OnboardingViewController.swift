@@ -34,12 +34,17 @@ class OnboardingViewController: UIViewController {
              OnboardingSlide(title: "World-Class Chefs", description: "Our dishes are prepared by only the best.", image: #imageLiteral(resourceName: "slide1")),
              OnboardingSlide(title: "Instant World-Wide Delivery", description: "Your orders will be delivered instantly irrespective of your location around the world.", image: #imageLiteral(resourceName: "slide3"))
          ]
+        
+        pageContoller.numberOfPages = sliders.count
     }
     
 
     @IBAction func nextBtnClicked(_ sender: UIButton) {
         if currentPage == sliders.count - 1 {
-               
+            let controller = storyboard?.instantiateViewController(identifier: "HomeNC") as! UINavigationController
+            controller.modalPresentationStyle = .fullScreen
+            controller.modalTransitionStyle = .flipHorizontal
+            present(controller, animated: true, completion: nil)
            } else {
             
                currentPage += 1
